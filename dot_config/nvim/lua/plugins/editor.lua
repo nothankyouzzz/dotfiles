@@ -34,11 +34,4 @@ return {
       scroll = { enabled = vim.g.neovide and true or false },
     },
   },
-
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    opts = {
-      model = "claude-sonnet-4"
-    }
-  }
 }
