@@ -20,9 +20,6 @@ function update
   sudo apt autoremove
 end
 
-fish_add_path ~/.local/bin
-fish_add_path ~/.miniconda/condabin
-
 # shell hooks
 fzf --fish | source
 zoxide init fish | source
