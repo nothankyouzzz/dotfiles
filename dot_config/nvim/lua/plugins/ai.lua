@@ -1,5 +1,17 @@
 return {
   {
+    "ravitemer/mcphub.nvim",
+    lazy = true,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    -- auto install failed, so I mannually install it.
+    build = "npm install -g mcp-hub@latest",
+    opts = {
+      port = 37373,
+    },
+  },
+  {
     "olimorris/codecompanion.nvim",
     cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
     dependencies = {
