@@ -27,4 +27,27 @@ return {
       }
     end,
   },
+
+  {
+    "linux-cultist/venv-selector.nvim",
+    -- idk why search options are not working when I use `opts` for setting up plugin
+    config = function()
+      require("venv-selector").setup({
+        options = {
+          debug = true,
+        },
+        search = {
+          miniconda_base = {
+            command = "fd 'bin/python$' ~/.miniconda/bin --color never --full-path --follow",
+            type = "anaconda",
+          },
+          miniconda_envs = {
+            command = "fd 'bin/python$' ~/.miniconda/envs --color never --full-path --follow",
+            type = "anaconda",
+          },
+          cwd = false,
+        },
+      })
+    end,
+  },
 }
