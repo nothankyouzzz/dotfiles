@@ -1,0 +1,51 @@
+From 32efab25955a8eb88e49f5134a715a6c0694b809 Mon Sep 17 00:00:00 2001
+From: nothankyou <luxun070188@outlook.com>
+Date: Mon, 4 Aug 2025 22:54:36 +0800
+Subject: [PATCH 1/2] fix(cmd): CodeCompanion Add
+
+fix issue #1658, duplicate text when using CodeCompanionChat Add to add
+text when **no chat buffer created**
+---
+ lua/codecompanion/init.lua                 | 3 ++-
+ lua/codecompanion/strategies/chat/init.lua | 4 ++++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/lua/codecompanion/init.lua b/lua/codecompanion/init.lua
+index 554a5180..ca6050a8 100644
+--- a/lua/codecompanion/init.lua
++++ b/lua/codecompanion/init.lua
+@@ -113,7 +113,7 @@ CodeCompanion.add = function(args)
+   local chat = CodeCompanion.last_chat()
+ 
+   if not chat then
+-    chat = CodeCompanion.chat()
++    chat = CodeCompanion.chat({ stop_context_insertion = true })
+ 
+     if not chat then
+       return log:warn("Could not create chat buffer")
+@@ -170,6 +170,7 @@ CodeCompanion.chat = function(args)
+     buffer_context = context,
+     messages = has_messages and messages or nil,
+     auto_submit = has_messages,
++    stop_context_insertion = args and args.stop_context_insertion,
+   })
+ end
+ 
+diff --git a/lua/codecompanion/strategies/chat/init.lua b/lua/codecompanion/strategies/chat/init.lua
+index 3f1f4507..d19e1084 100644
+--- a/lua/codecompanion/strategies/chat/init.lua
++++ b/lua/codecompanion/strategies/chat/init.lua
+@@ -602,6 +602,10 @@ function Chat.new(args)
+   self.close_last_chat()
+   self.ui:open():render(self.buffer_context, self.messages, args)
+ 
++  if args.stop_context_insertion then
++    self.opts.stop_context_insertion = true
++  end
++
+   -- Set the header line for the chat buffer
+   if args.messages and vim.tbl_count(args.messages) > 0 then
+     ---@cast self CodeCompanion.Chat
+-- 
+2.43.0
+

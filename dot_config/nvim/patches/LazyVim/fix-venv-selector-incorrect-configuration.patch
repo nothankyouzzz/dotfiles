@@ -1,0 +1,29 @@
+From cd5733bea81b3decbce98ae927d43bfb886777fb Mon Sep 17 00:00:00 2001
+From: nothankyou <luxun070188@outlook.com>
+Date: Sat, 2 Aug 2025 00:02:22 +0800
+Subject: [PATCH 3/3] fix(venv-selector): incorrect configuration
+
+---
+ lua/lazyvim/plugins/extras/lang/python.lua | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/lua/lazyvim/plugins/extras/lang/python.lua b/lua/lazyvim/plugins/extras/lang/python.lua
+index 4c098452..9f04b49a 100644
+--- a/lua/lazyvim/plugins/extras/lang/python.lua
++++ b/lua/lazyvim/plugins/extras/lang/python.lua
+@@ -120,10 +120,8 @@ return {
+       return LazyVim.has("telescope.nvim")
+     end,
+     opts = {
+-      settings = {
+-        options = {
+-          notify_user_on_venv_activation = true,
+-        },
++      options = {
++        notify_user_on_venv_activation = true,
+       },
+     },
+     --  Call config for python files and load the cached venv automatically
+-- 
+2.43.0
+

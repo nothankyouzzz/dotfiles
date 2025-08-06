@@ -1,0 +1,24 @@
+From 44523eb89717d6c47f61995fdde1fc10657705f8 Mon Sep 17 00:00:00 2001
+From: nothankyou <luxun070188@outlook.com>
+Date: Tue, 5 Aug 2025 14:58:18 +0800
+Subject: [PATCH 2/2] fix(win): resolve blank help floating window issue
+
+---
+ lua/codecompanion/utils/ui.lua | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lua/codecompanion/utils/ui.lua b/lua/codecompanion/utils/ui.lua
+index 175ba0cd..3c23d402 100644
+--- a/lua/codecompanion/utils/ui.lua
++++ b/lua/codecompanion/utils/ui.lua
+@@ -56,6 +56,7 @@ M.create_float = function(lines, opts)
+   end
+ 
+   local function close()
++    api.nvim_win_close(winnr, true)
+     api.nvim_buf_delete(bufnr, { force = true })
+   end
+ 
+-- 
+2.43.0
+
