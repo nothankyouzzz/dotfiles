@@ -82,33 +82,33 @@ return {
         "<leader>aa",
         "<cmd>CodeCompanionActions<CR>",
         desc = "Open the action palette",
-        mode = { "n" },
+        mode = { "n", "v" },
       },
       {
         "<leader>ac",
         "<cmd>CodeCompanionChat Toggle<CR>",
-        desc = "Toggle a chat buffer",
-        mode = { "n", "v" },
+        desc = "Toggle chat buffer",
+        mode = "n",
       },
       {
-        "<leader>ap",
+        "<leader>ac",
+        "<cmd>CodeCompanionChat Add<CR>",
+        desc = "Send to chat buffer",
+        mode = "v",
+      },
+      {
+        "<leader>ai",
         function()
           vim.ui.input({
             prompt = "Quick Prompt: ",
           }, function(input)
             if input and input ~= "" then
-              vim.cmd("CodeCompanionChat " .. input)
+              vim.cmd("'<,'>CodeCompanion " .. input)
             end
           end)
         end,
-        desc = "Quick Prompt",
-        mode = { "n", "v" },
-      },
-      {
-        "<leader>ac",
-        "<cmd>CodeCompanionChat Add<CR>",
-        desc = "Add code to a chat buffer",
-        mode = { "v" },
+        desc = "Inline Assistant",
+        mode = "v",
       },
     },
   },
