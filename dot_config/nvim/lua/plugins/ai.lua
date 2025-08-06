@@ -30,6 +30,7 @@ return {
   },
   {
     "olimorris/codecompanion.nvim",
+    -- dir = "~/sync/lua/codecompanion.nvim",
     cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
     dependencies = {
       "nvim-lua/plenary.nvim",
