@@ -59,7 +59,10 @@ return {
 
       display = {
         action_palette = {
-          provider = "default",
+          provider = "fzf_lua",
+          opts = {
+            prompt = "> "
+          }
         },
         chat = {
           window = {
