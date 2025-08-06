@@ -1,0 +1,26 @@
+From d9420c3f113f72c8fe336d54d3b2c2802f11aa8e Mon Sep 17 00:00:00 2001
+From: Iordanis Petkakis <12776461+dpetka2001@users.noreply.github.com>
+Date: Mon, 10 Mar 2025 21:16:03 +0200
+Subject: [PATCH] fix(neo-tree): import neo-tree Extra before edgy Extra
+
+---
+ lua/lazyvim/plugins/xtras.lua | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/lua/lazyvim/plugins/xtras.lua b/lua/lazyvim/plugins/xtras.lua
+index bb061d80..91e94343 100644
+--- a/lua/lazyvim/plugins/xtras.lua
++++ b/lua/lazyvim/plugins/xtras.lua
+@@ -3,7 +3,8 @@ local prios = {
+   ["lazyvim.plugins.extras.test.core"] = 1,
+   ["lazyvim.plugins.extras.dap.core"] = 1,
+   ["lazyvim.plugins.extras.coding.nvim-cmp"] = 2,
+-  ["lazyvim.plugins.extras.ui.edgy"] = 2,
++  ["lazyvim.plugins.extras.editor.neo-tree"] = 2,
++  ["lazyvim.plugins.extras.ui.edgy"] = 3,
+   ["lazyvim.plugins.extras.lang.typescript"] = 5,
+   ["lazyvim.plugins.extras.coding.blink"] = 5,
+   ["lazyvim.plugins.extras.formatting.prettier"] = 10,
+-- 
+2.43.0
+
