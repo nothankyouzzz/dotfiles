@@ -61,8 +61,10 @@ return {
         action_palette = {
           provider = "fzf_lua",
           opts = {
-            prompt = "> "
-          }
+            show_default_actions = true,
+            show_default_prompt_library = true,
+            prompt = "> ",
+          },
         },
         chat = {
           window = {
@@ -80,33 +82,25 @@ return {
       { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
       {
         "<leader>aa",
-        "<cmd>CodeCompanionActions<CR>",
+        "<cmd>CodeCompanionActions<cr>",
         desc = "Open the action palette",
         mode = { "n", "v" },
       },
       {
         "<leader>ac",
-        "<cmd>CodeCompanionChat Toggle<CR>",
+        "<cmd>CodeCompanionChat Toggle<cr>",
         desc = "Toggle chat buffer",
         mode = "n",
       },
       {
         "<leader>ac",
-        "<cmd>CodeCompanionChat Add<CR>",
+        "<cmd>CodeCompanionChat Add<cr>",
         desc = "Send to chat buffer",
         mode = "v",
       },
       {
         "<leader>ai",
-        function()
-          vim.ui.input({
-            prompt = "Quick Prompt: ",
-          }, function(input)
-            if input and input ~= "" then
-              vim.cmd("'<,'>CodeCompanion " .. input)
-            end
-          end)
-        end,
+        ":CodeCompanion ",
         desc = "Inline Assistant",
         mode = "v",
       },
