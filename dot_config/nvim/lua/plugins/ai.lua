@@ -1,14 +1,14 @@
 return {
   {
     "ravitemer/mcphub.nvim",
-    lazy = true,
+    cmd = "MCPHub",
+    build = "bundled_build.lua",
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    -- auto install failed, so I mannually install it.
-    build = "npm install -g mcp-hub@latest",
     opts = {
       port = 37373,
+      use_bundled_binary = true,
       auto_approve = function(params)
         -- Respect CodeCompanion's auto tool mode
         if vim.g.codecompanion_auto_tool_mode == true then
