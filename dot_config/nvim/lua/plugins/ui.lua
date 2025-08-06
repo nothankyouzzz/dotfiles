@@ -1,5 +1,15 @@
 return {
   {
+    "folke/tokyonight.nvim",
+    opts = {
+      on_highlights = function(highlights, colors)
+        highlights["@lsp.type.variable"] = { link = "@variable" }
+        highlights["@lsp.type.enumMember.haskell"] = { link = "@constructor" }
+      end,
+    },
+  },
+
+  {
     "folke/edgy.nvim",
     opts = {
       right = {
