@@ -66,14 +66,13 @@ return {
           },
         },
       },
-
       display = {
         action_palette = {
           provider = "fzf_lua",
           opts = {
             show_default_actions = true,
             show_default_prompt_library = true,
-            prompt = "> ",
+            title = "> ",
           },
         },
         diff = {
