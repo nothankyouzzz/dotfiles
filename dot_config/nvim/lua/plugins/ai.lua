@@ -36,6 +36,16 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "ravitemer/mcphub.nvim",
+      {
+        "echasnovski/mini.diff",
+        config = function()
+          local diff = require("mini.diff")
+          diff.setup({
+            -- Disabled by default
+            source = diff.gen_source.none(),
+          })
+        end,
+      },
     },
 
     opts = {
@@ -65,6 +75,9 @@ return {
             show_default_prompt_library = true,
             prompt = "> ",
           },
+        },
+        diff = {
+          provider = "mini_diff",
         },
         chat = {
           window = {
