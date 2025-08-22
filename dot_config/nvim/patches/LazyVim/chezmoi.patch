@@ -1,23 +1,27 @@
-From 9a2609e759c631862c0dd4c19da6cadc133924b7 Mon Sep 17 00:00:00 2001
+From 7864dc22054cf5d7b71be2e75ef27d9643216e1c Mon Sep 17 00:00:00 2001
 From: nothankyou <luxun070188@outlook.com>
-Date: Thu, 21 Aug 2025 10:41:12 +0800
+Date: Fri, 22 Aug 2025 06:23:24 +0800
 Subject: [PATCH] feat(lazyextra/chezmoi): enable display of hidden file in
- fzf-lua picker
+ file picker
 
 ---
- lua/lazyvim/plugins/extras/util/chezmoi.lua | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ lua/lazyvim/plugins/extras/util/chezmoi.lua | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/lua/lazyvim/plugins/extras/util/chezmoi.lua b/lua/lazyvim/plugins/extras/util/chezmoi.lua
-index 6c88fc45..25990743 100644
+index 6c88fc45..f1d46426 100644
 --- a/lua/lazyvim/plugins/extras/util/chezmoi.lua
 +++ b/lua/lazyvim/plugins/extras/util/chezmoi.lua
-@@ -8,7 +8,7 @@ local pick_chezmoi = function()
+@@ -8,7 +8,11 @@ local pick_chezmoi = function()
          fzf_lua.actions.vimcmd_entry("ChezmoiEdit", selected, { cwd = os.getenv("HOME") })
        end,
      }
 -    fzf_lua.files({ cmd = "chezmoi managed --include=files,symlinks", actions = actions })
-+    fzf_lua.files({ cmd = "chezmoi managed --include=files,symlinks", actions = actions, hidden = false })
++    fzf_lua.files({
++      cmd = "chezmoi managed --include=files,symlinks --path-style=absolute",
++      actions = actions,
++      hidden = false,
++    })
    elseif LazyVim.pick.picker.name == "snacks" then
      local results = require("chezmoi.commands").list({
        args = {
