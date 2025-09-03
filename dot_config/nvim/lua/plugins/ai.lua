@@ -11,7 +11,7 @@ return {
       use_bundled_binary = true,
       auto_approve = function(params)
         -- Respect CodeCompanion's auto tool mode
-        if vim.g.codecompanion_auto_tool_mode == true then
+        if vim.g.codecompanion_yolo_mode == true then
           return true
         end
         -- Auto-approve GitHub issue reading

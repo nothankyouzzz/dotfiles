@@ -3,7 +3,7 @@
 -- Add any additional options here
 vim.g.autoformat = false
 vim.g.lazyvim_python_lsp = "basedpyright"
-vim.g.codecompanion_auto_tool_mode = true
+vim.g.codecompanion_yolo_mode = true
 
 if vim.g.neovide then
   vim.o.guifont = "Cascadia Code NF:h13"
