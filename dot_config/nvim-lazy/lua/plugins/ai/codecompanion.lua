@@ -5,6 +5,7 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
     "ravitemer/mcphub.nvim",
+    "franco-ruggeri/codecompanion-spinner.nvim",
     {
       "saghen/blink.cmp",
       opts = {
@@ -18,6 +19,16 @@ return {
   },
 
   opts = {
+    strategies = {
+      chat = {
+        roles = {
+          llm = function(adapter)
+            return "  " .. adapter.formatted_name .. "(" .. adapter.schema.model.default .. ")"
+          end,
+          user = "  You",
+        },
+      },
+    },
     prompt_library = {
       ["Agent Mode"] = {
         strategy = "chat",
@@ -72,6 +83,7 @@ return {
           make_slash_commands = true, -- Add MCP prompts as /slash commands
         },
       },
+      spinner = {},
     },
   },
   keys = {
