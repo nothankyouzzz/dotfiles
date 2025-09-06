@@ -27,24 +27,13 @@ return {
       }
     end,
   },
-
   {
-    "linux-cultist/venv-selector.nvim",
+    "folke/tokyonight.nvim",
     opts = {
-      options = {
-        debug = true,
-      },
-      search = {
-        miniconda_base = {
-          command = "fd 'bin/python$' ~/.miniconda/bin --color never --full-path --follow",
-          type = "anaconda",
-        },
-        miniconda_envs = {
-          command = "fd 'bin/python$' ~/.miniconda/envs --color never --full-path --follow",
-          type = "anaconda",
-        },
-        cwd = false,
-      },
+      on_highlights = function(highlights, _)
+        highlights["@lsp.type.variable"] = { link = "@variable" }
+        highlights["@lsp.type.enumMember.haskell"] = { link = "@constructor" }
+      end,
     },
   },
 }
