@@ -1,6 +1,5 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
+alias lvim="NVIM_APPNAME=nvim-lazy nvim"
+alias avim="NVIM_APPNAME=nvim-astro nvim"
 
 source ~/.config/fish/themes/tokyonight_moon.fish
 
