@@ -27,3 +27,5 @@ direnv hook fish | source
 
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
 set -gx PATH $HOME/.cabal/bin /home/nothankyou/.ghcup/bin $PATH # ghcup-env
+
+starship init fish | source
