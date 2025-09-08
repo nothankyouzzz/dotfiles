@@ -29,23 +29,24 @@ return {
             end,
             user = "  You",
           },
+          tools = {
+            opts = {
+              default_tools = {
+                "full_stack_dev",
+              }
+            }
+          }
         },
-      },
-      prompt_library = {
-        ["Agent Mode"] = {
-          strategy = "chat",
-          description = "Agent mode, like in VSCode",
-          opts = {
-            index = 1,
-            short_name = "agent",
-            intro_message = "",
-            is_slash_cmd = true,
-            auto_submit = true,
-          },
-          prompts = {
-            {
-              role = "user",
-              content = "You are a @{full_stack_dev} provided with tool @{neovim} and @{mcp}.",
+        inline = {
+          keymaps = {
+            accept_change = {
+              modes = { n = "ga" },
+            },
+            reject_change = {
+              modes = { n = "gr" },
+            },
+            always_accept = {
+              mode = { n = "gaa" },
             },
           },
         },
