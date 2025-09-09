@@ -235,7 +235,7 @@ return {
       "<leader>ai",
       function()
         vim.ui.input({ prompt = "Inline Assistance" }, function(input)
-          if input ~= "" then
+          if input and input ~= "" then
             vim.cmd("'<,'>CodeCompanion " .. input)
           end
         end)
