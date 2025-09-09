@@ -40,13 +40,13 @@ return {
         inline = {
           keymaps = {
             accept_change = {
-              modes = { n = "ga" },
+              modes = { n = "<C-a>" },
             },
             reject_change = {
-              modes = { n = "gr" },
+              modes = { n = "<C-r>" },
             },
             always_accept = {
-              mode = { n = "gaa" },
+              modes = { n = "<C-y>" },
             },
           },
         },
