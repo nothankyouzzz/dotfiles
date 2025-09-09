@@ -116,7 +116,7 @@ return {
               adapter = "copilot",
               model = "gpt-4o",
               ---Number of user prompts after which to refresh the title (0 to disable)
-              refresh_every_n_prompts = 0, -- e.g., 3 to refresh after every 3rd user prompt
+              refresh_every_n_prompts = 3, -- e.g., 3 to refresh after every 3rd user prompt
               ---Maximum number of times to refresh the title (default: 3)
               max_refreshes = 3,
               format_title = function(original_title)
