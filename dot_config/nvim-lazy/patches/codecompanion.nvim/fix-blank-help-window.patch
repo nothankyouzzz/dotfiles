@@ -1,24 +1,32 @@
-From 44523eb89717d6c47f61995fdde1fc10657705f8 Mon Sep 17 00:00:00 2001
+From 4ea4817869a544acd786f8875b1f30733303a151 Mon Sep 17 00:00:00 2001
 From: nothankyou <luxun070188@outlook.com>
-Date: Tue, 5 Aug 2025 14:58:18 +0800
-Subject: [PATCH 2/2] fix(win): resolve blank help floating window issue
+Date: Tue, 9 Sep 2025 17:39:11 +0800
+Subject: [PATCH] fix(ui): properly close floating window before deleting
+ buffer
 
+Ensure the floating window is closed with `nvim_win_close` before
+attempting to delete the buffer, and check buffer validity to prevent
+errors.
 ---
- lua/codecompanion/utils/ui.lua | 1 +
- 1 file changed, 1 insertion(+)
+ lua/codecompanion/utils/ui.lua | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/lua/codecompanion/utils/ui.lua b/lua/codecompanion/utils/ui.lua
-index 175ba0cd..3c23d402 100644
+index 136fa50..eb5918f 100644
 --- a/lua/codecompanion/utils/ui.lua
 +++ b/lua/codecompanion/utils/ui.lua
-@@ -56,6 +56,7 @@ M.create_float = function(lines, opts)
+@@ -56,7 +56,10 @@ M.create_float = function(lines, opts)
    end
  
    local function close()
+-    api.nvim_buf_delete(bufnr, { force = true })
 +    api.nvim_win_close(winnr, true)
-     api.nvim_buf_delete(bufnr, { force = true })
++    if api.nvim_buf_is_valid(bufnr) then
++      api.nvim_buf_delete(bufnr, { force = true })
++    end
    end
  
+   vim.keymap.set("n", "q", close, { buffer = bufnr })
 -- 
 2.43.0
 
