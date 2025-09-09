@@ -1,12 +1,14 @@
 return {
   "olimorris/codecompanion.nvim",
   cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
+  init = function()
+    require("utils.spinner"):init()
+  end,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
     "ravitemer/mcphub.nvim",
     "Davidyz/VectorCode",
-    "franco-ruggeri/codecompanion-spinner.nvim",
     "ravitemer/codecompanion-history.nvim",
     {
       "saghen/blink.cmp",
@@ -86,7 +88,6 @@ return {
             make_slash_commands = true, -- Add MCP prompts as /slash commands
           },
         },
-        spinner = {},
         history = {
           enabled = true,
           opts = {
