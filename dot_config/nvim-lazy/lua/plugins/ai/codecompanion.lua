@@ -233,7 +233,13 @@ return {
     },
     {
       "<leader>ai",
-      ":CodeCompanion ",
+      function()
+        vim.ui.input({ prompt = "Inline Assistance" }, function(input)
+          if input ~= "" then
+            vim.cmd("'<,'>CodeCompanion " .. input)
+          end
+        end)
+      end,
       desc = "Inline Assistant",
       mode = "v",
     },
