@@ -1,6 +1,17 @@
 # My Dotfiles
 
-This repository contains my personal dotfiles for various command-line tools and applications. The configurations are managed using a dotfile manager, likely `chezmoi`.
+<!--toc:start-->
+- [My Dotfiles](#my-dotfiles)
+  - [Overview](#overview)
+  - [Structure](#structure)
+  - [Neovim Setups](#neovim-setups)
+    - [LazyVim (`nvim-lazy`)](#lazyvim-nvim-lazy)
+    - [AstroNvim (`nvim-astro`)](#astronvim-nvim-astro)
+  - [Installation](#installation)
+<!--toc:end-->
+
+This repository contains my personal dotfiles for various command-line tools
+and applications. The configurations are managed using a dotfile manager `chezmoi`.
 
 ## Overview
 
@@ -22,7 +33,8 @@ This setup includes configurations for:
 - `dot_gitconfig`: Git configuration.
 - `dot_condarc`: Conda configuration.
 - `dot_config/starship.toml`: Starship prompt configuration.
-- `dot_config/private_fish/`: Fish shell configuration, including aliases, theme, and environment variables.
+- `dot_config/private_fish/`: Fish shell configuration, including aliases,
+  theme, and environment variables.
 - `dot_config/nvim-lazy/`: LazyVim configuration for Neovim.
 - `dot_config/nvim-astro/`: AstroNvim configuration for Neovim.
 
@@ -47,7 +59,8 @@ Activated with `avim`. This configuration includes plugins for:
 
 ## Installation
 
-These dotfiles are likely managed by a tool like `chezmoi`. To use them, you would typically initialize `chezmoi` with this repository.
+These dotfiles are managed by `chezmoi`. To use them, you
+would typically initialize `chezmoi` with this repository.
 
 ```bash
 chezmoi init https://github.com/nothankyou/dotfiles
