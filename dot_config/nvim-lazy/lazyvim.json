@@ -14,7 +14,8 @@
     "lazyvim.plugins.extras.lang.python",
     "lazyvim.plugins.extras.lang.toml",
     "lazyvim.plugins.extras.ui.edgy",
-    "lazyvim.plugins.extras.util.chezmoi"
+    "lazyvim.plugins.extras.util.chezmoi",
+    "lazyvim.plugins.extras.util.project"
   ],
   "install_version": 7,
   "news": {
