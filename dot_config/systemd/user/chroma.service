@@ -1,0 +1,12 @@
+[Unit]
+Description=ChromaDB Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/nothankyou/.local/bin/chroma run --path /home/nothankyou/.local/share/vectorcode/chromadb
+WorkingDirectory=/home/nothankyou/.local/share/vectorcode
+Restart=always
+
+[Install]
+WantedBy=default.target
