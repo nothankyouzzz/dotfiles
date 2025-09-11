@@ -20,13 +20,15 @@ This setup includes configurations for:
 - **Shell:** `fish` with `starship` prompt and `zoxide` for directory navigation.
 - **Version Control:** `git` with user information pre-configured.
 - **Package Management:** `conda` for Python environments.
-- **Editor:** Neovim with two separate configurations:
+- **Editor:** Neovim, a powerful and extensible text editor, with two separate configurations:
   - `nvim-lazy`: A LazyVim-based setup.
   - `nvim-astro`: An AstroNvim-based setup.
 - **Other Tools:**
   - `bottom`: A system monitor.
   - `direnv`: For directory-specific environments.
   - `mcphub`: A Minecraft server manager.
+  - `systemd`: User services for tools like `chroma`.
+  - `mimeapps`: For defining default applications.
 
 ## Structure
 
@@ -37,8 +39,13 @@ This setup includes configurations for:
   theme, and environment variables.
 - `dot_config/nvim-lazy/`: LazyVim configuration for Neovim.
 - `dot_config/nvim-astro/`: AstroNvim configuration for Neovim.
+- `dot_config/systemd/`: Systemd user service definitions.
+- `dot_config/mimeapps.list`: Default application handlers.
 
 ## Neovim Setups
+
+Neovim is a hyperextensible Vim-based text editor that provides a powerful and
+flexible coding environment. For more information, visit the [Neovim website](https://neovim.io/).
 
 ### LazyVim (`nvim-lazy`)
 
@@ -48,6 +55,7 @@ Activated with `lvim`. This configuration includes plugins for:
 - Language support for Haskell and Python.
 - UI enhancements like `bufferline`, `edgy`, and `neo-tree`.
 - Utility plugins like `competitest` and `fzf`.
+- Patches for plugins are managed via `lazy-local-patcher`.
 
 ### AstroNvim (`nvim-astro`)
 
