@@ -27,7 +27,7 @@ end
 return {
   "ibhagwan/fzf-lua",
   opts = {
-    defaults = {
+    files = {
       actions = {
         ["enter"] = function(selected, opts)
           local target_win = find_fzf_target_win()
