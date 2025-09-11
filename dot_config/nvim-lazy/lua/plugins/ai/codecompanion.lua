@@ -1,3 +1,10 @@
+local fmt = string.format
+local constants = {
+  LLM_ROLE = "llm",
+  USER_ROLE = "user",
+  SYSTEM_ROLE = "system",
+}
+
 return {
   "olimorris/codecompanion.nvim",
   cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
@@ -21,6 +28,87 @@ return {
     },
   },
   opts = {
+    prompt_library = {
+      ["Polish"] = {
+        strategy = "inline",
+        description = "Polish the selected text",
+        opts = {
+          modes = { "v" },
+          short_name = "polish",
+          placement = "replace",
+        },
+        prompts = {
+          {
+            role = constants.USER_ROLE,
+            content = "Polish the selected text for clarity, conciseness, and overall quality",
+          },
+        },
+      },
+      ["Review"] = {
+        strategy = "chat",
+        description = "Review the selected code",
+        opts = {
+          modes = { "v" },
+          short_name = "review",
+          auto_submit = true,
+        },
+        prompt = {
+          {
+            role = constants.SYSTEM_ROLE,
+            content = "You are a code reviewer focused on improving code quality and maintainability.",
+          },
+          {
+            role = constants.USER_ROLE,
+            content = function(context)
+              local code = require("codecompanion.helpers.actions").get_code(context.start_line, context.end_line)
+              local prompt = [[Review the following code for potential issues, improvements, and best practices:
+
+```%s
+%s
+```]]
+              return fmt(prompt, context.filetype, code)
+            end,
+            opts = {
+              contains_code = true, -- used for global opt `send_code`
+            },
+          },
+        },
+      },
+      ["Optimize"] = {
+        strategy = "inline",
+        description = "Optimize the selected code",
+        opts = {
+          modes = { "v" },
+          short_name = "optimize",
+          placement = "replace",
+        },
+        prompts = {
+          {
+            role = constants.SYSTEM_ROLE,
+            content = "Ensure the optimized code maintains the same functionality as the original",
+          },
+          {
+            role = constants.USER_ROLE,
+            content = "Optimize the selected code to improve performance and readability. Explain your optimization strategy and the benefits of your changes.",
+          },
+        },
+      },
+      ["Comment"] = {
+        strategy = "inline",
+        description = "Generate comments for the selected code",
+        opts = {
+          modes = { "v" },
+          short_name = "comment",
+          placement = "replace",
+        },
+        prompts = {
+          {
+            role = constants.USER_ROLE,
+            content = "Generate clear and concise comments for the selected code, explaining its purpose and functionality.",
+          },
+        },
+      },
+    },
     strategies = {
       chat = {
         roles = {
