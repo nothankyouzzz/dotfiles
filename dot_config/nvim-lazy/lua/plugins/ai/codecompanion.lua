@@ -66,6 +66,7 @@ return {
             number = false,
             relativenumber = false,
             signcolumn = "yes",
+            winfixbuf = true,
           },
         },
       },
