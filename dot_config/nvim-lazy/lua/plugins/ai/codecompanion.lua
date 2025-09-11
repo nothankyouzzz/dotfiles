@@ -143,7 +143,7 @@ return {
               -- prevents using premium models for title generation
               adapter = "copilot", -- defaults to current chat adapter
               model = "gpt-4o", -- defaults to current chat model
-              context_size = 128000, -- max tokens that the model supports
+              context_size = 64000, -- max tokens that the model supports
               include_references = true, -- include slash command content
               include_tool_outputs = true, -- include tool execution results
               system_prompt = nil, -- custom system prompt (string or function)
@@ -187,16 +187,16 @@ return {
             vectorise = {},
             query = {
               max_num = { chunk = -1, document = -1 },
-              default_num = { chunk = 5, document = 1 },
+              default_num = { chunk = 10, document = 3 },
               include_stderr = false,
-              use_lsp = false,
+              use_lsp = true,
               no_duplicate = true,
-              chunk_mode = false,
+              chunk_mode = true,
               summarise = {
-                enabled = false,
+                enabled = true,
                 adapter = {
                   name = "copilot",
-                  model = "gpt-4o",
+                  model = "gpt-4.1", -- for larger context
                 },
                 query_augmented = true,
               },

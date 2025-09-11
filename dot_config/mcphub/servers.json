@@ -14,7 +14,8 @@
       "args": [
         "mcp-server-fetch"
       ],
-      "command": "uvx"
+      "command": "uvx",
+      "disabled": true
     },
     "filesystem": {
       "args": [
@@ -66,7 +67,12 @@
       "args": [
         "mcp-server-time"
       ],
-      "command": "uvx"
+      "command": "uvx",
+      "disabled": true
+    },
+    "vectorcode": {
+      "command": "vectorcode-mcp-server",
+      "disabled": true
     }
   }
 }
