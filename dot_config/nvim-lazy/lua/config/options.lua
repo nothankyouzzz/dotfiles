@@ -4,6 +4,7 @@
 vim.g.autoformat = false
 vim.g.lazyvim_python_lsp = "basedpyright"
 vim.g.codecompanion_yolo_mode = true
+vim.o.scrolloff = 3
 
 if vim.g.neovide then
   vim.o.guifont = "Cascadia Code NF:h13"

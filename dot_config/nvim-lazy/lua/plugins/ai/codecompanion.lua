@@ -9,20 +9,21 @@ return {
   "olimorris/codecompanion.nvim",
   cmd = {
     "CodeCompanion",
-    "CodeCompanionActions",
-    "CodeCompanionChat",
     "CodeCompanionCmd",
+    "CodeCompanionChat",
+    "CodeCompanionActions",
     "CodeCompanionHistory",
     "CodeCompanionSummaries",
   },
   dependencies = {
-    "nvim-lua/plenary.nvim",
     "fidget.nvim",
-    "nvim-treesitter/nvim-treesitter",
-    "ravitemer/mcphub.nvim",
-    "MeanderingProgrammer/render-markdown.nvim",
     "Davidyz/VectorCode",
+    "nvim-lua/plenary.nvim",
+    "ravitemer/mcphub.nvim",
+    "nvim-treesitter/nvim-treesitter",
+    "lalitmee/codecompanion-spinners.nvim",
     "ravitemer/codecompanion-history.nvim",
+    "MeanderingProgrammer/render-markdown.nvim",
     {
       "saghen/blink.cmp",
       opts = {
@@ -162,6 +163,7 @@ return {
             relativenumber = false,
             signcolumn = "yes",
             winfixbuf = true,
+            scrolloff = 3,
           },
         },
       },
@@ -302,11 +304,15 @@ return {
           },
         },
       },
+      spinner = {
+        opts = {
+          style = "fidget",
+        },
+      },
     },
   },
   config = function(_, opts)
     require("codecompanion").setup(opts)
-    require("utils.spinner"):init()
   end,
   keys = {
     { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
@@ -341,14 +347,8 @@ return {
       mode = "n",
     },
     {
-      "<leader>as",
-      "<cmd>CodeCompanionChat Add<cr>",
-      desc = "Add to chat",
-      mode = "v",
-    },
-    {
       "<leader>ai",
-      "<cmd>'<,'>CodeCompanion ",
+      ":CodeCompanion ",
       desc = "Inline Assistant",
       mode = "v",
     },
