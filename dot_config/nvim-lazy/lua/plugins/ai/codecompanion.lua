@@ -7,7 +7,14 @@ local constants = {
 
 return {
   "olimorris/codecompanion.nvim",
-  cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
+  cmd = {
+    "CodeCompanion",
+    "CodeCompanionActions",
+    "CodeCompanionChat",
+    "CodeCompanionCmd",
+    "CodeCompanionHistory",
+    "CodeCompanionSummaries",
+  },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "fidget.nvim",
@@ -304,32 +311,44 @@ return {
   keys = {
     { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
     {
-      "<leader>aa",
+      "<leader>ap",
       "<cmd>CodeCompanionActions<cr>",
-      desc = "Open the action palette",
+      desc = "Open action palette",
       mode = { "n", "v" },
     },
     {
-      "<leader>ac",
+      "<leader>at",
       "<cmd>CodeCompanionChat Toggle<cr>",
-      desc = "Toggle chat buffer",
+      desc = "Toggle chat window",
       mode = "n",
     },
     {
-      "<leader>ac",
+      "<leader>an",
+      "<cmd>CodeCompanionChat<cr>",
+      desc = "New Chat",
+      mode = { "n", "v" },
+    },
+    {
+      "<leader>ah",
+      "<cmd>CodeCompanionHistory<cr>",
+      desc = "Chat History",
+      mode = "n",
+    },
+    {
+      "<leader>as",
+      "<cmd>CodeCompanionSummaries<cr>",
+      desc = "Chat Summaries",
+      mode = "n",
+    },
+    {
+      "<leader>as",
       "<cmd>CodeCompanionChat Add<cr>",
-      desc = "Send to chat buffer",
+      desc = "Add to chat",
       mode = "v",
     },
     {
       "<leader>ai",
-      function()
-        vim.ui.input({ prompt = "Inline Assistance" }, function(input)
-          if input and input ~= "" then
-            vim.cmd("'<,'>CodeCompanion " .. input)
-          end
-        end)
-      end,
+      "<cmd>'<,'>CodeCompanion ",
       desc = "Inline Assistant",
       mode = "v",
     },
