@@ -7,6 +7,7 @@ local constants = {
 
 return {
   "olimorris/codecompanion.nvim",
+  dev = true,
   cmd = {
     "CodeCompanion",
     "CodeCompanionCmd",
@@ -20,6 +21,7 @@ return {
     "Davidyz/VectorCode",
     "nvim-lua/plenary.nvim",
     "ravitemer/mcphub.nvim",
+    "nvim-telescope/telescope.nvim",
     "nvim-treesitter/nvim-treesitter",
     "lalitmee/codecompanion-spinners.nvim",
     "ravitemer/codecompanion-history.nvim",
@@ -333,6 +335,12 @@ return {
       "<cmd>CodeCompanionChat<cr>",
       desc = "New Chat",
       mode = { "n", "v" },
+    },
+    {
+      "<leader>aa",
+      "<cmd>CodeCompanionChat Add<cr>",
+      desc = "Add to chat",
+      mode = { "v" },
     },
     {
       "<leader>ah",
