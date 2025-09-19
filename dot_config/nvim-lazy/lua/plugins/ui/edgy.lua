@@ -44,37 +44,41 @@ end
 
 return {
   "folke/edgy.nvim",
-  opts = {
-    animate = {
-      enabled = false,
-    },
-    right = {
-      {
-        title = "AI Chat",
-        ft = "codecompanion",
-        size = { width = 0.35 },
-        filter = function(_, win)
-          return vim.api.nvim_win_get_config(win).relative == ""
-        end,
-      },
-    },
-    keys = {
+  opts = function(_, opts)
+    opts.animate = { enabled = false }
+
+    table.insert(opts.right, {
+      title = "AI Chat",
+      ft = "codecompanion",
+      size = { width = 0.35 },
+      filter = function(_, win)
+        return vim.api.nvim_win_get_config(win).relative == ""
+      end,
+    })
+
+    opts.keys = {
       -- increase width
       ["<c-Right>"] = function(win)
         resize(win, "right")
+        -- win:resize("width", 2)
       end,
       -- decrease width
       ["<c-Left>"] = function(win)
         resize(win, "left")
+        -- win:resize("width", -2)
       end,
       -- increase height
       ["<c-Up>"] = function(win)
         resize(win, "up", 1)
+        -- win:resize("height", 1)
       end,
       -- decrease height
       ["<c-Down>"] = function(win)
         resize(win, "down", 1)
+        -- win:resize("height", -1)
       end,
-    },
-  },
+    }
+
+    return opts
+  end,
 }

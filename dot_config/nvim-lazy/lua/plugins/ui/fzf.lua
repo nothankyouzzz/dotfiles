@@ -26,6 +26,7 @@ end
 
 return {
   "ibhagwan/fzf-lua",
+  -- dev = true,
   opts = {
     files = {
       actions = {

@@ -1,7 +1,10 @@
 return {
   {
     "mrcjkb/haskell-tools.nvim",
-    config = function()
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+    init = function()
       vim.g.haskell_tools = {
         hls = {
           on_attach = function(_, _, _)
