@@ -38,6 +38,17 @@ return {
     },
   },
   opts = {
+    adapters = {
+      acp = {
+        gemini_cli = function()
+          return require("codecompanion.adapters").extend("gemini_cli", {
+            defaults = {
+              auth_method = "gemini-api-key",
+            },
+          })
+        end,
+      },
+    },
     prompt_library = {
       ["Polish"] = {
         strategy = "inline",
@@ -123,7 +134,12 @@ return {
       chat = {
         roles = {
           llm = function(adapter)
-            return "  " .. adapter.formatted_name .. "(" .. adapter.schema.model.default .. ")"
+            local model_name = adapter.schema and adapter.schema.model and adapter.schema.model.default
+            if model_name then
+              return "  " .. adapter.formatted_name .. "(" .. model_name .. ")"
+            else
+              return "  " .. adapter.formatted_name
+            end
           end,
           user = "  You",
         },
