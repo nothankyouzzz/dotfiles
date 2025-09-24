@@ -136,9 +136,9 @@ return {
           llm = function(adapter)
             local model_name = adapter.schema and adapter.schema.model and adapter.schema.model.default
             if model_name then
-              return "  " .. adapter.formatted_name .. "(" .. model_name .. ")"
+              return " " .. adapter.formatted_name .. "(" .. model_name .. ")"
             else
-              return "  " .. adapter.formatted_name
+              return " " .. adapter.formatted_name
             end
           end,
           user = "  You",
@@ -149,6 +149,16 @@ return {
               "full_stack_dev",
             },
           },
+        },
+        slash_commands = {
+          buffer = { opts = { provider = "fzf_lua" } }, -- telescope|fzf_lua|mini_pick|snacks|default
+          file = { opts = { provider = "fzf_lua" } },
+          symbols = { opts = { provider = "fzf_lua" } },
+          fetch = { opts = { provider = "fzf_lua" } },
+
+          -- These have different valid choices:
+          help = { opts = { provider = "snacks" } }, -- telescope|fzf_lua|mini_pick|snacks
+          image = { opts = { provider = "snacks" } }, -- telescope|snacks|default
         },
       },
       inline = {
@@ -171,7 +181,6 @@ return {
         opts = {
           show_default_actions = true,
           show_default_prompt_library = true,
-          title = "> ",
         },
       },
       chat = {
