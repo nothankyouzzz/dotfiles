@@ -1,6 +1,6 @@
 model_provider="openrouter"
 
 [model_providers.openrouter]
-name="openrouter"
+name="OpenRouter"
 base_url="https://openrouter.ai/api/v1"
 env_key="OPENROUTER_API_KEY"
