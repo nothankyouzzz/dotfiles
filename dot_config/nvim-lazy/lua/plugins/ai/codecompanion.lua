@@ -382,7 +382,19 @@ return {
     },
     {
       "<leader>aci",
-      ":CodeCompanion ",
+      function()
+        vim.ui.input({
+          prompt = "Inline assistant",
+          win = {
+            bo = { filetype = "codecompanion" },
+            b = { completion = true },
+          },
+        }, function(input)
+          if input and input ~= "" then
+            vim.cmd("CodeCompanion " .. input)
+          end
+        end)
+      end,
       desc = "Inline assistant",
       mode = "v",
     },
