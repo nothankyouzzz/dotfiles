@@ -21,7 +21,6 @@ return {
     "Davidyz/VectorCode",
     "nvim-lua/plenary.nvim",
     "ravitemer/mcphub.nvim",
-    "nvim-telescope/telescope.nvim",
     "nvim-treesitter/nvim-treesitter",
     "lalitmee/codecompanion-spinners.nvim",
     "ravitemer/codecompanion-history.nvim",
@@ -391,7 +390,7 @@ return {
           },
         }, function(input)
           if input and input ~= "" then
-            vim.cmd("CodeCompanion " .. input)
+            vim.cmd("'<,'>CodeCompanion " .. input)
           end
         end)
       end,
