@@ -47,14 +47,23 @@ return {
   opts = function(_, opts)
     opts.animate = { enabled = false }
 
-    table.insert(opts.right, {
-      title = "AI Chat",
-      ft = "codecompanion",
-      size = { width = 0.35 },
-      filter = function(_, win)
-        return vim.api.nvim_win_get_config(win).relative == ""
-      end,
-    })
+    local right = {
+      {
+        title = "CodeCompanion",
+        ft = "codecompanion",
+        size = { width = 0.45 },
+        filter = function(_, win)
+          return vim.api.nvim_win_get_config(win).relative == ""
+        end,
+      },
+      {
+        title = "Sidekick",
+        ft = "sidekick_terminal",
+        size = { width = 0.45 },
+      },
+    }
+
+    opts.right = vim.tbl_extend("force", opts.right, right)
 
     opts.keys = {
       -- increase width
