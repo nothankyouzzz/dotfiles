@@ -56,11 +56,6 @@ return {
           return vim.api.nvim_win_get_config(win).relative == ""
         end,
       },
-      {
-        title = "Sidekick",
-        ft = "sidekick_terminal",
-        size = { width = 0.45 },
-      },
     }
 
     opts.right = vim.tbl_extend("force", opts.right, right)
