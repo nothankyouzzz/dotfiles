@@ -131,6 +131,10 @@ return {
     },
     strategies = {
       chat = {
+        adapter = {
+          name = "copilot",
+          model = "gpt-5",
+        },
         roles = {
           llm = function(adapter)
             local model_name = adapter.schema and adapter.schema.model and adapter.schema.model.default
@@ -140,7 +144,7 @@ return {
               return " " .. adapter.formatted_name
             end
           end,
-          user = "  You",
+          user = " You",
         },
         tools = {
           opts = {
