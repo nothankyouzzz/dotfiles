@@ -1,0 +1,25 @@
+# Save breakpoints to a file and quit GDB
+define hook-quit
+  save breakpoints .breakpoints.gdb
+  quit
+end
+
+# Allow auto-loading of scripts from any path
+set auto-load safe-path /
+
+python
+
+session = '.breakpoints.gdb'
+
+# Function to load breakpoints from session file when a new object file is loaded
+def load_breakpoints(event):
+    if os.path.isfile(session):
+        gdb.execute(f"source {session}")
+        gdb.events.new_objfile.disconnect(load_breakpoints)
+
+# Connect the load_breakpoints function to the new_objfile event
+gdb.events.new_objfile.connect(load_breakpoints)
+
+end
+
+source ~/.gdb-dashboard
