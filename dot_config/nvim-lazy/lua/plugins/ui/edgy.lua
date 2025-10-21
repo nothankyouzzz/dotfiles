@@ -51,7 +51,7 @@ return {
       {
         title = "CodeCompanion",
         ft = "codecompanion",
-        size = { width = 0.45 },
+        size = { width = 0.375 },
         filter = function(_, win)
           return vim.api.nvim_win_get_config(win).relative == ""
         end,
