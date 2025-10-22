@@ -1,9 +1,6 @@
 return {
   "linux-cultist/venv-selector.nvim",
   opts = {
-    options = {
-      debug = true,
-    },
     search = {
       miniconda_base = {
         command = "fd 'bin/python$' ~/.miniconda/bin --color never --full-path --follow",

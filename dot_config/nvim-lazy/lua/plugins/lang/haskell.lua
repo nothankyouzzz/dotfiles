@@ -1,9 +1,6 @@
 return {
   {
     "mrcjkb/haskell-tools.nvim",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-    },
     init = function()
       vim.g.haskell_tools = {
         hls = {
@@ -29,6 +26,10 @@ return {
         },
       }
     end,
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    lazy = true,
   },
   {
     "folke/tokyonight.nvim",
