@@ -200,10 +200,10 @@ return {
             },
           },
           slash_commands = {
-            buffer = { opts = { provider = "fzf_lua" } }, -- telescope|fzf_lua|mini_pick|snacks|default
-            file = { opts = { provider = "fzf_lua" } },
-            symbols = { opts = { provider = "fzf_lua" } },
-            fetch = { opts = { provider = "fzf_lua" } },
+            buffer = { opts = { provider = "snacks" } }, -- telescope|fzf_lua|mini_pick|snacks|default
+            file = { opts = { provider = "snacks" } },
+            symbols = { opts = { provider = "snacks" } },
+            fetch = { opts = { provider = "snacks" } },
 
             -- These have different valid choices:
             help = { opts = { provider = "snacks" } }, -- telescope|fzf_lua|mini_pick|snacks
@@ -231,7 +231,7 @@ return {
       },
       display = {
         action_palette = {
-          provider = "fzf_lua",
+          provider = "snacks",
           opts = {
             show_default_actions = true,
             show_default_prompt_library = true,
@@ -275,7 +275,7 @@ return {
             -- Number of days after which chats are automatically deleted (0 to disable)
             expiration_days = 0,
             -- Picker interface (auto resolved to a valid picker)
-            picker = "fzf-lua", --- ("telescope", "snacks", "fzf-lua", or "default")
+            picker = "snacks", --- ("telescope", "snacks", "fzf-lua", or "default")
             ---Optional filter function to control which chats are shown when browsing
             chat_filter = nil, -- function(chat_data) return boolean end
             -- Customize picker keymaps (optional)
