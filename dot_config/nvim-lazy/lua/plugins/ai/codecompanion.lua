@@ -460,4 +460,19 @@ return {
       open_files_do_not_replace_types = { "codecompanion" },
     },
   },
+
+  {
+    "folke/edgy.nvim",
+    opts = function(_, opts)
+      opts.right = opts.right or {}
+      table.insert(opts.right, {
+        title = "CodeCompanion",
+        ft = "codecompanion",
+        size = { width = 0.375 },
+        filter = function(_, win)
+          return vim.api.nvim_win_get_config(win).relative == ""
+        end,
+      })
+    end,
+  },
 }
