@@ -1,35 +1,23 @@
----@return boolean
-local function at_top_edge()
-  return vim.fn.winnr() == vim.fn.winnr("k")
-end
+-- stylua: ignore start
+local function leftmost()   return vim.fn.winnr("h") == vim.fn.winnr() end
+local function rightmost()  return vim.fn.winnr("l") == vim.fn.winnr() end
+local function topmost()    return vim.fn.winnr("k") == vim.fn.winnr() end
+local function bottommost() return vim.fn.winnr("j") == vim.fn.winnr() end
 
----@return boolean
-local function at_bottom_edge()
-  return vim.fn.winnr() == vim.fn.winnr("j")
-end
+local function at_top_edge()    return topmost()    and not bottommost() end
+local function at_bottom_edge() return bottommost() and not topmost()    end
+local function at_left_edge()   return leftmost()   and not rightmost()  end
+local function at_right_edge()  return rightmost()  and not leftmost()   end
+-- stylua: ignore end
 
----@return boolean
-local function at_left_edge()
-  return vim.fn.winnr() == vim.fn.winnr("h")
-end
-
----@return boolean
-local function at_right_edge()
-  return vim.fn.winnr() == vim.fn.winnr("l")
-end
-
--- Assumption: a window cannot simultaneously be at
--- all four edges (top, bottom, left, right)
---
 ---@param direction "left" | "right" | "up" | "down"
----@param amount? number positive integer
+---@param amount number positive integer
 local function resize(win, direction, amount)
-  amount = amount or 2
-
-  local negate = (direction == "up" and at_top_edge())
-    or (direction == "down" and at_bottom_edge())
-    or (direction == "left" and at_left_edge())
-    or (direction == "right" and at_right_edge())
+  -- stylua: ignore
+  local negate = (direction == "up"    and at_top_edge())
+              or (direction == "down"  and at_bottom_edge())
+              or (direction == "left"  and at_left_edge())
+              or (direction == "right" and at_right_edge())
 
   if negate then
     amount = -amount
@@ -47,42 +35,12 @@ return {
   opts = function(_, opts)
     opts.animate = { enabled = false }
 
-    local right = {
-      {
-        title = "CodeCompanion",
-        ft = "codecompanion",
-        size = { width = 0.375 },
-        filter = function(_, win)
-          return vim.api.nvim_win_get_config(win).relative == ""
-        end,
-      },
-    }
-
-    opts.right = vim.tbl_extend("force", opts.right, right)
-
+    -- stylua: ignore
     opts.keys = {
-      -- increase width
-      ["<c-Right>"] = function(win)
-        resize(win, "right")
-        -- win:resize("width", 2)
-      end,
-      -- decrease width
-      ["<c-Left>"] = function(win)
-        resize(win, "left")
-        -- win:resize("width", -2)
-      end,
-      -- increase height
-      ["<c-Up>"] = function(win)
-        resize(win, "up", 1)
-        -- win:resize("height", 1)
-      end,
-      -- decrease height
-      ["<c-Down>"] = function(win)
-        resize(win, "down", 1)
-        -- win:resize("height", -1)
-      end,
+      ["<c-Right>"] = function(win) resize(win, "right", 2) end,
+      ["<c-Left>"]  = function(win) resize(win, "left",  2) end,
+      ["<c-Up>"]    = function(win) resize(win, "up",    1) end,
+      ["<c-Down>"]  = function(win) resize(win, "down",  1) end,
     }
-
-    return opts
   end,
 }
