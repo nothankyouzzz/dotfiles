@@ -2359,6 +2359,17 @@ class Breakpoints(Dashboard.Module):
         }
 
 
+session = '.breakpoints.gdb'
+
+# Function to load breakpoints from session file when a new object file is loaded
+def load_breakpoints(event):
+    if os.path.isfile(session):
+        gdb.execute(f"source {session}")
+        gdb.events.new_objfile.disconnect(load_breakpoints)
+
+# Connect the load_breakpoints function to the new_objfile event
+gdb.events.new_objfile.connect(load_breakpoints)
+
 # XXX traceback line numbers in this Python block must be increased by 1
 end
 
