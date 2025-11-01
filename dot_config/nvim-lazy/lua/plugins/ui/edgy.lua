@@ -32,6 +32,7 @@ end
 
 return {
   "folke/edgy.nvim",
+  optional = true,
   opts = function(_, opts)
     opts.animate = { enabled = false }
 
