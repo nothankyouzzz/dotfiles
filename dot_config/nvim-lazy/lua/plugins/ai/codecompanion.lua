@@ -8,7 +8,7 @@ local constants = {
 return {
   {
     "olimorris/codecompanion.nvim",
-    dev = true,
+    dev = false,
     cmd = {
       "CodeCompanion",
       "CodeCompanionCmd",

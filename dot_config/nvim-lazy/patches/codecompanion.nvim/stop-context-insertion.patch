@@ -1,0 +1,36 @@
+diff --git a/lua/codecompanion/init.lua b/lua/codecompanion/init.lua
+index f4503ab2..be192ef4 100644
+--- a/lua/codecompanion/init.lua
++++ b/lua/codecompanion/init.lua
+@@ -114,7 +114,7 @@ CodeCompanion.add = function(args)
+   local chat = CodeCompanion.last_chat()
+ 
+   if not chat then
+-    chat = CodeCompanion.chat()
++    chat = CodeCompanion.chat({ stop_context_insertion = true })
+ 
+     if not chat then
+       return log:warn("Could not create chat buffer")
+@@ -186,6 +186,7 @@ CodeCompanion.chat = function(args)
+     callbacks = args.callbacks,
+     messages = has_messages and messages or nil,
+     window_opts = args and args.window_opts,
++    stop_context_insertion = args.stop_context_insertion,
+   })
+ end
+ 
+diff --git a/lua/codecompanion/strategies/chat/init.lua b/lua/codecompanion/strategies/chat/init.lua
+index 8883f1c7..f9b88a31 100644
+--- a/lua/codecompanion/strategies/chat/init.lua
++++ b/lua/codecompanion/strategies/chat/init.lua
+@@ -536,6 +536,10 @@ function Chat.new(args)
+   self.close_last_chat()
+   self.ui:open():render(self.buffer_context, self.messages, { stop_context_insertion = args.stop_context_insertion })
+ 
++  if args.stop_context_insertion then
++    self.opts.stop_context_insertion = true
++  end
++
+   -- Set the header line for the chat buffer
+   if args.messages and vim.tbl_count(args.messages) > 0 then
+     local header_line = parser.headers(self, self.chat_parser)

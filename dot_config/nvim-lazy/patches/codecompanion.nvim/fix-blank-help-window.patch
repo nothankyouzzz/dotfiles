@@ -1,0 +1,16 @@
+diff --git a/lua/codecompanion/utils/ui.lua b/lua/codecompanion/utils/ui.lua
+index 1d4bc65c..c5e6632d 100644
+--- a/lua/codecompanion/utils/ui.lua
++++ b/lua/codecompanion/utils/ui.lua
+@@ -126,7 +126,10 @@ M.create_float = function(lines, opts)
+   end
+ 
+   local function close()
+-    api.nvim_buf_delete(bufnr, { force = true })
++    api.nvim_win_close(winnr, true)
++    if api.nvim_buf_is_valid(bufnr) then
++      api.nvim_buf_delete(bufnr, { force = true })
++    end
+   end
+ 
+   vim.keymap.set("n", "q", close, { buffer = bufnr })
