@@ -1,10 +1,7 @@
 {
-  "general": {
-    "preferredEditor": "neovim"
-  },
   "security": {
     "auth": {
-      "selectedType": "gemini-api-key"
+      "selectedType": "oauth-personal"
     }
   }
 }
