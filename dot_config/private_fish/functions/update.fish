@@ -3,5 +3,5 @@ function update
   sudo apt update
   sudo apt full-upgrade
   sudo apt autoremove
-  npm update -g
+  pnpm update -g
 end
