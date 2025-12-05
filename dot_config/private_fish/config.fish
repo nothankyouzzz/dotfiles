@@ -18,3 +18,10 @@ zoxide init fish | source
 conda "shell.fish" hook | source
 direnv hook fish | source
 starship init fish | source
+
+# pnpm
+set -gx PNPM_HOME "/home/nothankyou/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
