@@ -3,5 +3,6 @@ function update
   sudo apt update
   sudo apt full-upgrade
   sudo apt autoremove
-  pnpm update -g
+  pnpm self-update
+  pnpm update -g --latest
 end
