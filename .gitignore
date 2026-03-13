@@ -1,3 +1,4 @@
 dot_config/private_fish/api_keys.fish
+dot_config/private_fish/fish_variables
 dot_config/private_fish/functions/__sdkman-noexport-init.sh
 private_dot_gitconfig.local
