@@ -1,0 +1,12 @@
+[Unit]
+Description=ChromaDB Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart={{ .chezmoi.homeDir }}/.local/bin/chroma run --path {{ .chezmoi.homeDir }}/.local/share/vectorcode/chromadb
+WorkingDirectory={{ .chezmoi.homeDir }}/.local/share/vectorcode
+Restart=always
+
+[Install]
+WantedBy=default.target
