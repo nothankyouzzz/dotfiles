@@ -213,6 +213,14 @@ most likely mistake.
 - For review tasks, present findings first, ordered by severity.
 - Summarize relevant command results instead of pasting raw output unless the user asks for it.
 
+## English Learning Support
+
+- If the user's message is clearly understandable but not natural or native sounding, begin the response with one short `Tip:` line that rewrites the user's wording in more natural English.
+- Keep the tip brief and practical. Prefer a direct rewrite over grammar explanations.
+- Only add a tip when the wording is clearly unnatural, awkward, or likely non-native. Do not trigger on minor mistakes, casual style, or intentional informal phrasing.
+- After the tip, continue with the normal response. Do not let the language tip take over the answer.
+- Format the tip as a single line at the very beginning of the response, then leave a blank line before the main response.
+
 ## Completion Check
 
 Before finishing, confirm all of the following:
