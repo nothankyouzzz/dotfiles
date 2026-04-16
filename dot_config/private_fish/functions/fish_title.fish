@@ -1,11 +1,16 @@
-# Separated from pure-fish/pure
 function fish_title \
-    --description "Set title to current folder and shell name"
+    --description "Set title to the foreground command or current folder"
 
-    set --local current_folder (basename (pwd))
-    set --local current_command (status current-command 2>/dev/null; or echo $_)[1]
-    set --local separator "|"
+    set --local title (path basename -- $PWD)
 
-    set --local prompt "$current_folder $separator $current_command"
-    echo $prompt
+    if set --query argv[1]
+        set --local command_line (string trim -- $argv[1])
+
+        if test -n "$command_line"
+            set --local command_parts (string split --max 1 ' ' -- $command_line)
+            set title (path basename -- $command_parts[1])
+        end
+    end
+
+    echo $title
 end
