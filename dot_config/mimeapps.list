@@ -1,3 +1,4 @@
 [Default Applications]
 x-scheme-handler/http=wslview.desktop
 x-scheme-handler/https=wslview.desktop
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop
