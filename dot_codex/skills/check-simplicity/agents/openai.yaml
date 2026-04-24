@@ -1,0 +1,4 @@
+interface:
+  display_name: "Check Simplicity"
+  short_description: "Review plans for unnecessary complexity"
+  default_prompt: "Use $check-simplicity to review this plan for unnecessary complexity before implementation."
