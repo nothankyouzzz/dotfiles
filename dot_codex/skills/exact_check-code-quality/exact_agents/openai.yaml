@@ -1,0 +1,4 @@
+interface:
+  display_name: "Check Code Quality"
+  short_description: "Review code for errors and comment contracts"
+  default_prompt: "Use $check-code-quality to review this diff for visible error handling and comment contracts."
